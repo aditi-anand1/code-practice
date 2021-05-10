@@ -1,3 +1,8 @@
+/**
+ * Create a call log list which would display 10 recent calls.
+ * Solved this using Queue.
+ * @author 
+ */
 #include<iostream>
 #include<ctime>
 #include<queue>
