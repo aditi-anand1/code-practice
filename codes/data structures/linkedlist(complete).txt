@@ -1,0 +1,138 @@
+#include <iostream>
+
+using namespace std;
+struct node{
+    int data;
+    node* next;
+};
+node* insertbeg(node* head){
+    cout<<"enter the number"<<endl;
+    int dat;
+    cin>>dat;
+     node* temp=new node();
+    temp->data=dat;
+    if(head==NULL){
+        head=temp;
+       temp->next=NULL;
+    }
+    else{
+        temp->next=head;
+        head=temp;
+    }
+    return head;
+}
+
+node* insertend(node* head){
+    cout<<"enter the number"<<endl;
+    node* ptr=head;
+    int dat;
+    cin>>dat;
+    node* temp=new node();
+    temp->data=dat;
+    if(head==NULL){
+        head=temp;
+        temp->next=NULL;
+    }
+    else{
+        while(ptr->next!=NULL){
+            ptr=ptr->next;
+        }
+        ptr->next=temp;
+        temp->next=NULL;
+    }
+    return head;
+}
+node* insertmid(node* head){
+    node* temp=new node;
+    node* ptr=head;
+    int where;
+    int what;
+    cout<<"what you want to enter"<<endl;
+    cin>>what;
+    temp->data=what;
+    if(head==NULL){
+        head=temp;
+        temp->next==NULL;
+    }
+    else{cout<<"where you want to enter"<<endl;
+        cin>>where;
+        while(ptr!=NULL){
+            if(ptr->data==where){
+                temp->next=ptr->next;
+                ptr->next=temp;
+                break;
+            }
+            ptr=ptr->next;
+        }
+        if(ptr==NULL){
+            cout<<"invalid selection";
+        }
+    }
+    return head;
+}
+node* del(node* head){
+    cout<<head->data;
+     if(head==NULL){
+        cout<<"cannot use tgis funtion list is already empty"<<endl;
+        return head;
+    }
+    node* ptr=head;
+    node* temp=head;
+    int x;
+    cout<<"what you want to delete"<<endl;
+    cin>>x;
+    
+    while(temp->data!=x){
+        ptr=temp;
+        temp=temp->next;
+    }
+    if(head==){
+        head=temp->next;
+    }
+    else{
+        ptr->next=temp->next;
+    }
+    return head;
+}
+
+void print(node* head){
+    node* ptr=head;
+    while(ptr!=NULL){
+        cout<<ptr->data;
+        ptr=ptr->next;
+    }
+}
+
+int main()
+{   node* head=NULL;
+  int n,user;
+  cout<<"ho many numbers you want to enter"<<endl;
+  cin>>n;
+  while(n--){
+      cout<<"how you want to enter"<<endl;
+      cout<<"enter 1 if u want to enter by beginning"<<endl;
+      cout<<"enter 2 if u want o enter by end"<<endl;
+      cout<<"enter 3 if u want to enter the number after a specific number"<<endl;
+      cout<<"enter 4 if u want to delete the existig number"<<endl;
+      cin>>user;
+      switch(user){
+          case 1:
+          head=insertbeg(head);
+          break;
+          case 2:
+          head=insertend(head);
+          break;
+          case 3:
+          head=insertmid(head);
+           break;
+          case 4:
+           head=del(head);
+           break;
+          default:
+          cout<<"Invalid Option. Please select a valid option from the above menu.";
+      }
+  }
+  print(head);
+
+    return 0;
+}

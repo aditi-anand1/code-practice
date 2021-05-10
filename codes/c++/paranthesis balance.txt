@@ -1,0 +1,49 @@
+#include <iostream>
+#include<stack>
+using namespace std;
+int main()
+{	stack<char>s;
+string a;
+char x;
+int i;
+cin>>a;
+int len=a.length();
+for(i=0;i<len;i++){
+	if((a[i]==')'||a[i]=='}'||a[i]==']')&&s.empty())
+	{
+		s.push(a[i]);
+	}
+	if(a[i]=='('||a[i]=='{'||a[i]=='['){
+		s.push(a[i]);
+	}
+	if(a[i]==')'&&!s.empty()){
+		x=s.top();
+		if(x=='('){
+			s.pop();
+		}
+		else
+			break;
+	}
+	if(a[i]=='}'&&!s.empty()){
+		x=s.top();
+		if(x=='{'){
+			s.pop();
+		}
+		else
+			break;
+	}
+	if(a[i]==']'&&!s.empty()){
+		x=s.top();
+		if(x=='['){
+			s.pop();
+		}
+		else
+			break;
+	}
+}
+if(s.empty())
+	cout<<"1";
+else	
+	cout<<"0";
+	
+}

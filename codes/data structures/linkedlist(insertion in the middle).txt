@@ -1,0 +1,63 @@
+#include<iostream>
+using namespace std;
+struct node{
+    int data;
+    node* next;
+};
+int main(){
+    node* head=NULL;
+    node* ptr=head;
+    int n;
+    cout<<"how many numbers you want o enter"<<endl;
+    cin>>n;
+    while(n--){
+        node* temp=new node;
+        int dat;
+        cin>>dat;
+        temp->data=dat;
+        temp->next=NULL;
+        if(head==NULL){
+            head=temp;
+            ptr=head;
+        }
+        else{
+            ptr->next=temp;
+            ptr=ptr->next;
+        }
+        
+    }
+    ptr=head;
+    while(ptr!=NULL){
+        cout<<ptr->data<<" ";
+        ptr=ptr->next;
+    }
+    cout<<"enter what number u want to enter"<<endl;
+    int num,s;
+    cin>>num;
+    cout<<"after which number you wznt to add aur new number"<<endl;
+    cin>>s;
+    ptr=head;
+    while(ptr!=NULL){
+        if(ptr->data==s){
+            node* a= new node();
+            a->data=num;
+            a->next=ptr->next;
+            ptr->next=a;
+            break;
+        }
+        
+        ptr=ptr->next;
+    }
+    if(ptr==NULL)
+        cout<<"invalid";
+    else{
+    cout<<"so the new linked list is "<<endl;
+    ptr=head;
+    while(ptr!=NULL){
+        cout<<ptr->data<<" ";
+        ptr=ptr->next;
+    }
+    }
+    
+    
+}

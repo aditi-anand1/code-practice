@@ -1,0 +1,23 @@
+#include <iostream>
+#include<stack>
+using namespace std;
+int main()
+{	stack<int>s;
+int a,rem,x[20],i=0,j;
+cin>>a;
+
+while(a>0){
+	rem=a%10;
+	a=a/10;
+	s.push(rem);
+}
+while(!s.empty()){
+	x[i]=s.top();
+	s.pop();
+	i++;
+	
+}
+for(j=i-1;j>=0;j--){
+	cout<<x[j];
+}
+}

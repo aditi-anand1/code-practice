@@ -1,0 +1,86 @@
+insertion at tha end using function
+#include <iostream>
+
+using namespace std;
+struct node{            #creattion of the datatype of the node
+    int data;
+    node* next;
+};
+
+node* insert(int n){            # this is the insertion fucntion used to insert the values in the linked listwhoes data type we have talen as *node becoz we will return 
+    node* head =NULL;               head by this fucntion so its data type is noDe*..... we will retuen head becoz if we will have head we can acess to whole linked list
+    node* ptr =head;
+    while(n--){
+        node* temp=new node();
+        int datas;
+        cin>>datas;
+        temp->data=datas;
+        temp->next=NULL;
+        if(head==NULL){
+            head=temp;
+            ptr=head;
+        }
+        else{
+            ptr->next=temp;
+            ptr=ptr->next;
+        }
+        
+    }
+    return head;            #so here we return the head
+}
+void print( node* head){            $ this function will take the input as head so that it can access to thw whole linked list
+    node* ptr=head;
+    while(ptr!=NULL){
+        cout<<ptr->data<<" ";
+        ptr=ptr->next;
+    }
+}
+
+int main()
+{
+    int n;
+    cin>>n;
+    node* head=insert(n);       # we are calling the insert fucntion and storing it in the head
+    print(head);                # we will pass the argument head in the print fucntion
+    
+}
+#without using fucntions
+#include <iostream>
+
+using namespace std;
+struct node{
+    int data;
+    node* next;
+};
+
+int main()
+{
+   int n;
+   cin>>n;
+   node* head=NULL;
+   node* ptr=head;
+   while(n>0){
+       node* temp=new node();
+       int datas;
+       cin>>datas;
+       temp->data=datas;
+       temp->next=NULL;
+       if(head==NULL){
+           head=temp;
+           ptr=head;
+       }
+       else{
+           ptr->next=temp;
+           ptr=ptr->next;
+       }
+       n--;
+       
+   }
+   ptr=head;
+    while(ptr!=NULL){
+        cout<<ptr->data<<endl;
+        ptr=ptr->next;
+    }
+
+    return 0;
+}

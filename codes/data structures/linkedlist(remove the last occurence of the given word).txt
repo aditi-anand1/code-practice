@@ -1,0 +1,92 @@
+#include <iostream>
+
+using namespace std;
+struct node{
+    int data;
+    node* next;
+};
+node* create(int n){
+    cout<<"enter the element"<<endl;
+    node* head=NULL;
+    node* ptr=head;
+    while(n--){
+        node* temp=new node();
+        int dat;
+        cin>>dat;
+        temp->data=dat;
+        temp->next=NULL;
+        if(head==NULL){
+            head=temp;
+            ptr=head;
+        }
+        else{
+            ptr->next=temp;
+            ptr=ptr->next;
+        }
+    }
+    return head;
+}
+int counting(node* head, int s){
+    node* ptr=head;
+    int i=0;
+    while(ptr!=NULL){
+        if(ptr->data==s){
+            i++;
+        }
+            ptr=ptr->next;
+    }
+    if(i==0){
+        cout<<"invalid selection so nothing will be deleted so list will remain the same"<<endl;
+    }
+    else
+        return i;
+}
+node* del(int x ,int s, node* head){
+    int i=0;
+    node* ptr=head;
+    node* temp=head;
+    while(ptr!=NULL){
+        if(ptr->data==s){
+            i++;
+            if(i==x){
+                if(ptr==head){
+                    head=ptr->next;
+                }
+                else{
+                 temp->next=ptr->next;
+                 break;
+                }
+            }
+        }
+        temp=ptr;
+        ptr=ptr->next;
+    }
+
+    return head;
+}
+void print(node* head){
+    node* ptr=head;
+    while(ptr!=NULL)
+    {
+        cout<<ptr->data<<" ";
+        ptr=ptr->next;
+    }
+}
+
+int main(){
+node* head=NULL;
+  cout<<"enter the number of element you want in your list"<<endl;
+    int n,counts,s;
+    cin>>n;
+    head=create(n);
+    cout<<"your list is"<<endl;
+    print(head);
+    cout<<"enter the number whoes last occurence we have to delete"<<endl;
+    cin>>s;
+    counts=counting(head,s);
+    head=del(counts,s,head);
+    cout<<"enter your new list is"<<endl;
+    print(head);
+    
+    
+}

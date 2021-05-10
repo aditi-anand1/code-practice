@@ -1,0 +1,19 @@
+#logic from hackker rank for diagonal difference
+
+int diagonalDifference(vector<vector<int>> arr) {
+    int i,j,sum1=0,sum2=0;
+    
+    for(i=0;i<arr.size();i++)
+    {
+        for(j=0;j<arr[i].size();j++)
+        {
+            if(i==j) {
+                sum1=arr[i][j]+sum1;
+            }
+             if(i+j==arr.size()-1) {
+                sum2=arr[i][j]+sum2; 
+            }
+        }
+    }
+return abs(sum1-sum2);
+}

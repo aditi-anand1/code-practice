@@ -1,0 +1,73 @@
+//adding two linked list to make a single linked list in zig zag order
+
+#include <iostream>
+
+using namespace std;
+struct node{
+    int data;
+    node* next;
+};
+node* create(int n){
+    cout<<"enter the element"<<endl;
+    node* head=NULL;
+    node* ptr=head;
+    while(n--){
+        node* temp=new node();
+        int dat;
+        cin>>dat;
+        temp->data=dat;
+        temp->next=NULL;
+        if(head==NULL){
+            head=temp;
+            ptr=head;
+        }
+        else{
+            ptr->next=temp;
+            ptr=ptr->next;
+        }
+    }
+    return head;
+}
+
+node* join(node* head1 , node* head2 , int y){
+    node* ptr1=head1;
+    node* ptr2=head2;
+   node* temp1=ptr1->next;
+    node* temp2=ptr2->next;
+    while(ptr2!=NULL){
+        ptr1->next=head2;
+        head2=temp2;
+        ptr2->next=temp1;
+        ptr2=head2;
+        temp2=ptr2->next;
+        ptr1=temp1;
+        temp1=ptr1->next;
+    }
+    return head1;
+}
+
+void print(node* head){
+    node* ptr=head;
+    while(ptr!=NULL){
+        cout<<ptr->data<<" ";
+        ptr=ptr->next;
+    }
+}
+
+int main()
+{
+    node* head1;
+    node* head2;
+    node* head;
+    cout<<"enter the nuimber of elements you want in ur first linked list"<<endl;
+    int x,y;
+    cin>>x;
+    head1=create(x);
+    cout<<"enter the number of element you want in your second list"<<endl;
+    cin>>y;
+    head2=create(y);
+    head=join(head1,head2,y);
+    print(head);
+    
+    
+}

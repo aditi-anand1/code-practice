@@ -1,0 +1,80 @@
+#include <iostream>
+#include<stack>
+
+using namespace std;
+
+int main()
+{   stack<char>alpha;
+    stack<char>signs;
+    char x,y;
+    int i,j=0;
+    string input,s;
+    cin>>input;
+    int len=input.length();
+    for(i=0;i<len;i++){
+            if(input[i]=='+'||input[i]=='-'||input[i]=='*'||input[i]=='/'||input[i]=='('||input[i]=='^')
+            {
+                 if((input[i]=='+'||input[i]=='-')&&(!signs.empty()&&(signs.top()=='*'||signs.top()=='/'||signs.top()=='^')))
+                 {  
+                    while(!signs.empty()&&(signs.top()=='*'||signs.top()=='/'||signs.top()=='^'||signs.top()=='+')){
+                    x=signs.top();
+                    alpha.push(x);
+                    signs.pop();
+                    }
+                     y=input[i];
+                    signs.push(y);
+                 }
+                 
+                  else if(!signs.empty()&&((input[i]=='+'&&signs.top()=='+')||(input[i]=='-'&&signs.top()=='-')||(input[i]=='*'&&signs.top()=='*')||(input[i]=='/'&&signs.top()=='/'))){
+                    alpha.push(input[i]);
+                  }
+                  
+                 else 
+                 signs.push(input[i]);
+                
+            }
+            
+            else if(input[i]!='+'&&input[i]!='-'&&input[i]!='*'&&input[i]!='/'&&input[i]!='('&&input[i]!=')'&&input[i]!='^')
+            {
+                alpha.push(input[i]);
+            }
+           
+            else if(input[i]==')')
+            {
+                x=signs.top();
+                alpha.push(x);
+                signs.pop();
+                
+                if(!signs.empty()&&(signs.top()=='*'||signs.top()=='+'||signs.top()=='-'||signs.top()=='/'||signs.top()=='^'))
+                {
+                    x=signs.top();
+                    alpha.push(x);
+                    signs.pop();
+                     signs.pop();
+                }
+                else
+                    signs.pop();
+            }
+    }
+    if(!signs.empty())
+    {
+        while(!signs.empty())
+        {
+            x=signs.top();
+            alpha.push(x);
+            signs.pop();
+        }
+    }
+    while(!alpha.empty())
+    {
+        s[j]=alpha.top();
+        alpha.pop();
+        j++;
+    }
+    for(i=len-1;i>=0;i--){
+        cout<<s[i];
+    }
+    
+
+    return 0;
+}

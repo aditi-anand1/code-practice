@@ -1,0 +1,69 @@
+#include<iostream>
+using namespace std;
+struct node{
+    int data;
+    node* next;
+};
+node* insert(int n){
+    node* head=NULL;
+    node* ptr=head;
+    while(n--){
+        node* temp=new node();
+        int dat;
+        cin>>dat;
+        temp->data=dat;
+        temp->next=NULL;
+        if(head==NULL){
+            head=temp;
+            ptr=head;
+        }
+        else{
+            ptr->next=temp;
+            ptr=ptr->next;
+        }
+    }
+    return head;
+}
+
+
+void print(node* head){
+    node* ptr=head;
+    cout<<"your linked list is"<<endl;
+    while(ptr!=NULL){
+        cout<<ptr->data<<" ";
+        ptr=ptr->next;
+    }
+    cout<<endl;
+}
+
+
+node* del(int num, node* head){
+    node* ptr=head;
+    node* temp=head;
+    while(ptr->data!=num){
+        temp=ptr;
+        ptr=ptr->next;
+    }
+    if(ptr==head){
+        head=ptr->next;
+    }
+    else{
+        temp->next=ptr->next;
+    }
+   
+    return head;
+}
+
+
+int main(){
+    int n,num;
+    cout<<"number of inputs u want"<<endl;
+    cin>>n;
+    node* head=insert(n);
+    print(head);
+    cout<<"what you want to delete"<<endl;
+    cin>>num;
+    head=del(num,head);
+    print(head);
+    
+}

@@ -1,0 +1,62 @@
+#include<iostream>
+#include<vector>
+#include<stack>
+using namespace std;
+
+int main(){
+    stack<string>a;
+    // vector<string>input;
+    string s;
+   
+    int n,len,i,j,itr;
+    cin>>n;
+    for(itr=0;itr<n;itr++)
+    {
+    vector<string>input;
+    j=0;
+    cin>>len;
+    cout << j << len << a.empty() << endl;
+    for(i=0;i<len;i++)
+    {
+        cin>>s;
+        cout<<s<<endl;
+        input.push_back(s);
+    }
+    
+    for(i=0;i<len;i++)
+    {
+        if(a.empty()||(input[i]!=a.top()))
+        {
+            a.push(input[i]);
+        }
+        else if(input[i]==a.top())
+        {
+            a.pop();
+        }
+    }
+    
+    while(!a.empty())
+    {
+        a.pop();
+        j++;
+    }
+    cout<<j<<"\n";
+    cout<<endl;
+    }
+}
+
+Vedant Hates Consecutive (100 Marks)
+Vedant is one of the few people who hates strange things. Vedant hates to see the duplicate consecutive strings. His enemies know this very well and are planning to tease him. You are his best friend and donâ€™t want to see him irritated. The plan is to provide him with a set of strings(lowercase) including the hateful strings and he has to tell the number of strings after the removal of hateful strings. The set of strings will be provided to you to hand over to Vedant. You are his friend and want to help him. You have a plan to remove all t
+input
+3
+5
+aman vimal vimal nagar rahul 
+5
+amma anna anna amala amala 
+6
+and is is list list and 
+
+output
+3
+1
+0
