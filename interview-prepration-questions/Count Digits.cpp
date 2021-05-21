@@ -9,7 +9,7 @@ using namespace std;
 
 
 //We can convert the number into a string and then find the length
-//   of the string to get the number of digits in the original number.
+//   of the string to get t                             he number of digits in the original number.
 int method1(long long n){
     string s=to_string(n);
     return s.size();
