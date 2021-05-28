@@ -72,7 +72,7 @@ cout<<"your grid : "<<endl;
     cout<<"destination position"<<endl;
     int row_des, col_des;
     cin>>row_des>>col_des;  // destination positin where you want to go
-    if(game[row_start][col_start]==0){
+    if(game[row_start][col_start]==0){ // if our starting is from water then 
         game[row_start][col_start]=1;
     }
     if(check(game,row_start,col_start,row_des,col_des,row,col)){
