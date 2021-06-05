@@ -13,7 +13,7 @@
 #include<iostream>
 #include<vector>
 using namespace std;
-vector<vector<int>>dp; // golbal vector for memoization
+vector<vector<int>>dp; // global vector for memoization
 
 
 int max(int a, int b){
